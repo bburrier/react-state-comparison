@@ -23,6 +23,9 @@ a:active{
     font-weight: bold;
     text-decoration: none;
 }
+label {
+    font-weight: bold;
+}
 
 /* Sections */
 main {
@@ -105,7 +108,19 @@ code.error {
 pre {
     background-color: #cdd79673;
     border-radius: .25rem;
+    border: 1px solid #CCC;
+    box-shadow: 5px 5px 5px rgb(0 0 0 / 5%);
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-    font-size: .75rem;
+    font-size: .65rem;
     padding: 1rem;
+    text-align: left;
+    white-space: break-spaces;
+}
+.ml-10 {
+    margin-left: 10px;
+}   
+.caption {
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: normal;
 }

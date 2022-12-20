@@ -1,5 +1,6 @@
 {
-  "name": "state",
+  "name": "state-comparison",
+  "homepage": "https://bburrier.github.io/react-state-comparison",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
