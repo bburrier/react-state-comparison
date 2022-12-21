@@ -7,7 +7,7 @@ class Counter extends React.Component {
     }
     render() {
         return (
-        <>
+        <div className="counter">
             <span className="count-display">
                 <label>count:</label> {this.state.count}
             </span>
@@ -15,7 +15,7 @@ class Counter extends React.Component {
                 className="ml-10" 
                 onClick={() => this.setState({ count: this.state.count + 1 })}
             >+</button>
-        </>
+        </div>
         );
     }
 }

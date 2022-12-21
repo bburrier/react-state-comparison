@@ -28,23 +28,6 @@ label {
 }
 
 /* Sections */
-main {
-    display: grid;
-    justify-content: center;
-    justify-items: stretch;
-    margin: 0 auto;
-    max-width: 700px;
-    padding: 1rem 1.5rem 8rem 1.5rem;
-    vertical-align: top;
-}
-#masthead {
-    grid-column-end: span all;
-    grid-column-start: 1; 
-    padding: 0 10px;
-}
-#masthead h1 {
-    word-spacing: -0.25rem;
-}
 summary {
     margin-bottom: 1.5rem;
 }
@@ -75,10 +58,6 @@ footer .github-link {
 
 /* Mobile / Tablet */
 @media (max-width: 700px) {
-    main { 
-        grid-template-columns: unset;
-        justify-items: stretch;
-    }
     footer {
         padding: 0.75rem;
         font-size: 0.9rem;
@@ -99,14 +78,14 @@ code {
     background-color: #cdd796;
     border-radius: .25rem;
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-    font-size: .8rem;
+    font-size: 0.9em;
     padding: 0 .25rem;
 }
 code.error {
     background-color: #ead2d1;
 }
 pre {
-    background-color: #cdd79673;
+    background-color: rgba(255,255,255,0.2);
     border-radius: .25rem;
     border: 1px solid #CCC;
     box-shadow: 5px 5px 5px rgb(0 0 0 / 5%);
@@ -123,4 +102,7 @@ pre {
     text-align: left;
     font-size: 0.75rem;
     font-weight: normal;
+}
+label {
+    margin-right: 5px;
 }
