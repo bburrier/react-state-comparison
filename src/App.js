@@ -139,17 +139,17 @@ const CountContext = React.createContext(0);`
 `// App.js
 
 <CountContext.Provider value={33}>
-<ContextCounter/>
+    <ContextCounter/>
 
-<p>
-  <label className="ml-10">
-    non-hook context consumer: 
-  </label>
+    <p>
+        <label className="ml-10">
+            non-hook context consumer: 
+        </label>
 
-  <CountContext.Consumer>
-    {value => value}
-  </CountContext.Consumer>
-</p>
+        <CountContext.Consumer>
+            {value => value}
+        </CountContext.Consumer>
+    </p>
 
 </CountContext.Provider>`
           }
