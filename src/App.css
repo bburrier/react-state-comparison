@@ -58,14 +58,16 @@
 
 section.example {
   min-height: 30rem;
-  border: 1px solid #CCC;
-  border-radius: 4px;
+  background-color: #DEDEDE;
+  border: 1px solid #BBB;
+  border-radius: 2px;
   box-shadow: 5px 5px 5px rgb(0 0 0 / 5%);
   padding: 1rem;
 }
 
 section.example pre {
   width: 22rem;
+  background-color: #E9E9E9;
 }
 
 .count-display {
