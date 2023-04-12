@@ -2,8 +2,9 @@ import './App.css';
 import React from 'react';
 import { default as ClassCounter } from './ClassCounter';
 import { default as HookCounter } from './HookCounter';
-import { default as ContextCounter } from './ContextCounter';
-import CountContext from './contexts/CountContext';
+import { default as ContextInitial } from './ContextInitial';
+import { default as ContextUpdate } from './ContextUpdate';
+import { CountContext, CountProvider } from './contexts/CountContext';
 
 function App() {
 
@@ -13,7 +14,7 @@ function App() {
        <section id="masthead">
             <h1>React State Comparison</h1>
             <summary>
-                Exploring options for state management in React.
+                Comparing state management scenarios in React.
             </summary>
         </section>
 
@@ -99,13 +100,15 @@ export default Counter;`
 
       <section className="example">
         <div className="caption">
-          <b>3.</b> <code>Context</code> state with <code>function</code> component + <code>useContext</code>, <code>useState</code> hooks.
+          <b>3.</b> <code>Context</code> for <b>initial</b> state with <code>function</code> component + <code>useContext</code> hook.
+          State managed internally by <b>child</b> component, does not update context.
         </div>
         <pre>
           {
-`// ContextCounter.js
+`// ContextInitial.js
 
 import React from 'react';
+import { CountContext } from '../contexts/CountContext';
 
 function Counter() {
   const initialCount = React.useContext(CountContext);
@@ -139,7 +142,7 @@ const CountContext = React.createContext(0);`
 `// App.js
 
 <CountContext.Provider value={33}>
-    <ContextCounter/>
+    <ContextInitial/>
 
     <p>
         <label className="ml-10">
@@ -155,7 +158,7 @@ const CountContext = React.createContext(0);`
           }
         </pre>
         <CountContext.Provider value={33}>
-          <ContextCounter/>
+          <ContextInitial/>
 
           <p>
             <label className="ml-10">
@@ -170,8 +173,98 @@ const CountContext = React.createContext(0);`
         </CountContext.Provider>
       </section>
 
+      <section className="example">
+        <div className="caption">
+          <b>3.</b> <code>Context</code> with custom <b>provider</b> component managing state, <code>setState</code> passed to children through context.
+          Shared context is <b>updated</b> by child calling <code>setCount</code>.
+        </div>
+        <pre>
+          {
+`
+// ContextUpdate.js
+
+import React from 'react';
+import { CountContext } from '../contexts/CountContext';
+
+function Counter(props) {
+    const {count, setCount} = React.useContext(CountContext);
+
+    return (
+       <div className="counter">
+            <span className="count-display">
+                <label>count:</label> {count}
+            </span>
+            <button
+                className="ml-10"
+                onClick={() => setCount(count + 1)}
+            >+</button>
+        </div>
+    );
+}
+
+export default Counter;
+`
+          }
+        </pre>
+        <pre>
+          {
+`// CountContext.js
+
+const CountContext = React.createContext(0);
+
+function CountProvider(props) {
+    const [count, setCount] = React.useState(33);
+
+    return (
+        <CountContext.Provider value={{count, setCount}}>
+            {props.children}
+        </CountContext.Provider>
+    )
+}
+`       
+        }
+        </pre>
+        <pre>
+            {
+`// App.js
+
+<CountProvider>
+  <ContextUpdate/>
+
+  <p>
+    <label className="ml-10">
+      non-hook context consumer:
+    </label>
+
+    <CountContext.Consumer>
+      {value => value.count}
+    </CountContext.Consumer>
+  </p>
+
+</CountProvider>
+`
+          }
+        </pre>
+
+        <CountProvider>
+          <ContextUpdate/>
+
+          <p>
+            <label className="ml-10">
+              non-hook context consumer:
+            </label>
+
+            <CountContext.Consumer>
+              {value => value.count}
+            </CountContext.Consumer>
+          </p>
+
+        </CountProvider>
+      </section>
+
     </div>
   );
 }
+
 
 export default App;

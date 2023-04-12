@@ -1,9 +1,8 @@
 import React from 'react';
-import CountContext from '../contexts/CountContext';
+import { CountContext } from '../contexts/CountContext';
 
-function Counter() {
-    const initialCount = React.useContext(CountContext);
-    const [count, setCount] = React.useState(initialCount);
+function Counter(props) {
+    const {count, setCount} = React.useContext(CountContext);
 
     return (
        <div className="counter">

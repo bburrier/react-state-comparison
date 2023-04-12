@@ -1,5 +1,5 @@
 # React state comparison
-Comparing options for state management in **React** including class component state, function component state, using hooks and context, and integration with state containers. <img width="15px" src="public/logo192.png"/>
+Comparing state management scenarios in **React** including class component state, function component state, using hooks and context, and integration with state management libraries. <img width="15px" src="public/logo192.png"/>
 
 <img width="500px" src="docs/screenshot.png"/>
 
